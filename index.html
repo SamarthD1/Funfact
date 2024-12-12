@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Facts Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .fact-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 150px;
+        }
+
+        #generate-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        #generate-btn:hover {
+            background: #357abd;
+        }
+
+        #fact-category {
+            color: #4a90e2;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Space Facts Generator</h1>
+        <div class="fact-box">
+            <p id="fact-text">Click the button to generate a random space fact!</p>
+            <p id="fact-category"></p>
+        </div>
+        <button id="generate-btn">Generate Fact</button>
+    </div>
+
+    <script>
+        const spaceFacts = {
+            "space_facts": [
+                {
+                    "id": 1,
+                    "fact": "Light from the Sun takes approximately 8 minutes and 20 seconds to reach Earth",
+                    "category": "solar_system"
+                },
+                {
+                    "id": 2,
+                    "fact": "A day on Venus is longer than its year - 243 Earth days to rotate, 225 Earth days to orbit",
+                    "category": "planets"
+                },
+                {
+                    "id": 3,
+                    "fact": "The largest known star, UY Scuti, is approximately 1,700 times larger than our Sun",
+                    "category": "stars"
+                },
+                {
+                    "id": 4,
+                    "fact": "The ISS travels at about 17,500 mph and orbits Earth every 90 minutes",
+                    "category": "space_stations"
+                },
+                {
+                    "id": 5,
+                    "fact": "Jupiter's Great Red Spot has been storming for at least 400 years",
+                    "category": "planets"
+                },
+                {
+                    "id": 6,
+                    "fact": "Saturn's rings are composed primarily of water ice and rock",
+                    "category": "planets"
+                },
+                {
+                    "id": 7,
+                    "fact": "The Andromeda Galaxy will collide with the Milky Way in about 4.5 billion years",
+                    "category": "galaxies"
+                },
+                {
+                    "id": 8,
+                    "fact": "One million Earths could fit inside the Sun",
+                    "category": "solar_system"
+                },
+                {
+                    "id": 9,
+                    "fact": "Mars' Olympus Mons is the largest known volcano in the solar system",
+                    "category": "planets"
+                },
+                {
+                    "id": 10,
+                    "fact": "Neutron stars can spin up to 600 times per second",
+                    "category": "stars"
+                },
+                {
+                    "id": 11,
+                    "fact": "Space is completely silent due to the absence of air for sound waves",
+                    "category": "space_physics"
+                },
+                {
+                    "id": 12,
+                    "fact": "Apollo astronauts' footprints on the Moon will last for at least 100 million years",
+                    "category": "space_exploration"
+                },
+                {
+                    "id": 13,
+                    "fact": "The Sun's core temperature is about 15 million degrees Celsius",
+                    "category": "stars"
+                },
+                {
+                    "id": 14,
+                    "fact": "A NASA space suit costs approximately $12 million",
+                    "category": "space_technology"
+                },
+                {
+                    "id": 15,
+                    "fact": "A full NASA space suit weighs about 280 pounds on Earth",
+                    "category": "space_technology"
+                },
+                {
+                    "id": 16,
+                    "fact": "Mercury and Venus are the only planets in our solar system without moons",
+                    "category": "planets"
+                },
+                {
+                    "id": 17,
+                    "fact": "There are more stars in the universe than grains of sand on Earth",
+                    "category": "universe"
+                },
+                {
+                    "id": 18,
+                    "fact": "Laika was the first living creature in space, launched in 1957",
+                    "category": "space_exploration"
+                },
+                {
+                    "id": 19,
+                    "fact": "Voyager 1 is traveling at about 17 kilometers per second",
+                    "category": "space_exploration"
+                },
+                {
+                    "id": 20,
+                    "fact": "The average galaxy contains over 100 billion stars",
+                    "category": "galaxies"
+                }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generate-btn');
+            const factText = document.getElementById('fact-text');
+            const factCategory = document.getElementById('fact-category');
+
+            function getRandomFact() {
+                const facts = spaceFacts.space_facts;
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                return facts[randomIndex];
+            }
+
+            generateBtn.addEventListener('click', () => {
+                const fact = getRandomFact();
+                factText.textContent = fact.fact;
+                factCategory.textContent = `Category: ${fact.category.replace('_', ' ')}`;
+                
+                // Add animation
+                factText.style.opacity = 0;
+                setTimeout(() => {
+                    factText.style.opacity = 1;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
